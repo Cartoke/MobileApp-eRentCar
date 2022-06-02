@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -42,6 +43,25 @@ class _LoginState extends State<Login> {
               Image(
                 image: AssetImage("lib/assets/logo.png"),
               ),
+              RichText(
+                text: TextSpan(
+                  text: "eRentCar",
+                  style: TextStyle(
+                    color: Color(0xffe8e8ef),
+                    fontSize: 60,
+                    fontWeight: FontWeight.bold
+                  )
+                ),
+              ),
+              Text(
+                "Welcome to eRentCar Mobile App",
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xffe8e8ef)
+                ),
+              ),
               Form(
                 child: Theme(
                   data: ThemeData(
@@ -71,14 +91,14 @@ class _LoginState extends State<Login> {
                           obscureText: true,
                         ),
                         Padding(
-                            padding: EdgeInsets.only(top: 30)
+                            padding: EdgeInsets.only(top: 60)
                         ),
                         MaterialButton(
                             height: 40,
                             minWidth:60,
                             color: Colors.lightBlue,
                             textColor: Colors.white,
-                            child: Icon(FontAwesomeIcons.signInAlt),
+                            child: Text("Sign In"),
                             onPressed: () => {},
                             splashColor: Colors.blueAccent,
                         )
