@@ -20,8 +20,17 @@ class myCars extends StatefulWidget {
   State<myCars> createState() => _myCarsState();
 }
 
+class Car {
+  final String name;
+  final String model;
+  final String year;
+  final String description;
+  final String image;
+  Car(this.name, this.model, this.year, this.description, this.image);
+}
+
 class _myCarsState extends State<myCars> {
-  final List<String> cars = <String>[];
+  final List<Car> cars = <Car>[];
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +39,7 @@ class _myCarsState extends State<myCars> {
         backgroundColor: Colors.blueAccent,
         title: const Text('My Vehicles'),
       ),
-      body: cars.length > 0 ? buildCars() :
+      body: cars.isNotEmpty ? buildCars() :
         const Center(
           child: Text('No cars added yet'),
         ),
@@ -53,16 +62,24 @@ class _myCarsState extends State<myCars> {
     );
   }
 
-  Widget buildRow(String car, int index){
+  Widget buildRow(Car car, int index){
     return ListTile(
       leading: const Icon(Icons.directions_car),
-      title: Text(car),
-      subtitle: const Text('Car Description'),
-      onLongPress: (){
-        setState(() {
-          cars.removeAt(index);
-        });
-      },
+      title: Text(car.name),
+      subtitle: Text(car.description),
+      // onLongPress: (){
+      //   setState(() {
+      //     cars.removeAt(index);
+      //   });
+      // },
+      trailing: IconButton(
+        icon: const Icon(Icons.delete),
+        onPressed: (){
+          setState(() {
+            cars.removeAt(index);
+          });
+        },
+      ),
     );
   }
 
@@ -80,7 +97,8 @@ class _myCarsState extends State<myCars> {
   }
 
   addCar() {
-    final textController = TextEditingController();
+    final carName = TextEditingController();
+    final carDescription = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
@@ -88,21 +106,32 @@ class _myCarsState extends State<myCars> {
       ),
       body:
         Center(
-          child: TextField(
-            controller: textController,
-            decoration: const InputDecoration(
-              labelText: 'Car Name',
-              border: OutlineInputBorder(),
-            ),
-          ),
+          child: Column(
+            children: [
+              TextField(
+                controller: carName,
+                decoration: const InputDecoration(
+                  labelText: 'Car Name',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              TextField(
+                controller: carDescription,
+                decoration: const InputDecoration(
+                  labelText: 'Car Description',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+            ],
+          )
         ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blueAccent,
         child: const Icon(Icons.save),
         onPressed: () {
           setState(() {
-            cars.add(textController.text);
-            textController.clear();
+            Car car = Car(carName.text, '', '', carDescription.text, '');
+            cars.add(car);
           });
           Navigator.pop(context);
         },
