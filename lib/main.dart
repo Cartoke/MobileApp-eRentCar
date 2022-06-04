@@ -111,7 +111,7 @@ class _LoginState extends State<Login> {
                             color: Colors.lightBlue,
                             textColor: Colors.white,
                             child: Text("Sign In"),
-                            onPressed: pushNext,
+                            onPressed: () => {},
                             splashColor: Colors.blueAccent,
                         ),
                         Divider(
@@ -136,7 +136,7 @@ class _LoginState extends State<Login> {
                           color: Colors.deepOrange,
                           textColor: Colors.white,
                           child: Text("Register"),
-                          onPressed: () => {},
+                          onPressed: pushNext,
 
                         )
                       ],
