@@ -25,6 +25,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool showPassword = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,17 +78,29 @@ class _LoginState extends State<Login> {
 
                         TextFormField(
                           decoration: InputDecoration(
+                            icon: Icon(Icons.person),
                             hintText: "Put your email"
                           ),
                           keyboardType: TextInputType.emailAddress,
                         ),
                         TextFormField(
+                          obscureText: showPassword,
                           decoration: InputDecoration(
                             //labelText: "Enter password:"
-                              hintText: "Put your password"
+                              icon: Icon(Icons.vpn_key),
+                              hintText: "Put your password",
+                              suffix: IconButton(onPressed: (){
+                                setState(() {
+                                  if (showPassword) {
+                                    showPassword = false;
+                                  } else {
+                                    showPassword = true;
+                                  }
+                                });
+                              }, icon: Icon(showPassword == true?Icons.remove_red_eye:Icons.password),
+                              )
                           ),
                           keyboardType: TextInputType.text,
-                          obscureText: true,
                         ),
                         Padding(
                             padding: EdgeInsets.only(top: 10)
@@ -142,21 +156,20 @@ class _LoginState extends State<Login> {
       MaterialPageRoute(
           builder: (BuildContext context){
             return Scaffold(
+                backgroundColor: Color(0xff91b5c9),
                 body: Stack(
                   fit: StackFit.expand,
                   children: <Widget>[
-                    Image(
-                      image: AssetImage("lib/assets/background.jpg"),
-                      fit: BoxFit.cover,
-                      color: Colors.black26,
-                      colorBlendMode: BlendMode.luminosity,
-                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Image(
                           image: AssetImage("lib/assets/logo.png"),
                           width: 100,
+                        ),
+                        Text(
+                          "Complete with your personal information",
+                          textAlign: TextAlign.center,
                         ),
                         Form(
                           child: Theme(
