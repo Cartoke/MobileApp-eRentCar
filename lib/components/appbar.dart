@@ -12,23 +12,14 @@ class Appbar extends StatelessWidget{
         actions: <Widget>[
           IconButton(
               icon: Icon(Icons.person),
-              color: Colors.black,
+              //color: Colors.black,
               onPressed: (){
               }
-          )/*,
-          Text('Sofia')
-          TextButton.icon(
-            onPressed: () {},
-            icon: Icon( // <-- Icon
-              Icons.person,
-              size: 24.0,
-            ),
-            label: Text('Sofia'), // <-- Text
-          )*/
+          )
         ],
         leading:IconButton(
             icon: Icon(Icons.menu),
-            color: Colors.black,
+            //color: Colors.black,
             onPressed: (){}
         )
     );

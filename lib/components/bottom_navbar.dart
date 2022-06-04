@@ -32,10 +32,11 @@ class BottomNavbar extends StatelessWidget{
             children: <Widget>[
               IconButton(
                   icon: Icon(Icons.phone),
-                  color: Colors.black,
+                  color: Colors.white,
                   onPressed: (){}
               ),
-              Text("¿Tiene alguna duda? Comuníquese con 555-5555")
+              Text("¿Tiene alguna duda? Comuníquese con 555-5555",
+                  style: TextStyle(color: Colors.white))
             ]
         )
     );

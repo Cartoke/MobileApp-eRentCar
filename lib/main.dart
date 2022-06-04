@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           color: eBackgroundColor
         ),
-        scaffoldBackgroundColor: eBackgroundColor,
+        scaffoldBackgroundColor: eBackgroundColor2,
         /*Theme.of(context).textTheme.apply(
             bodyColor:Colors.black,
             displayColor: Colors.black),*/
