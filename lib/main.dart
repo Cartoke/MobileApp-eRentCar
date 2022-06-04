@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'CarDataModel.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,7 +8,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: myCars()
     );
   }
@@ -20,22 +20,21 @@ class myCars extends StatefulWidget {
   State<myCars> createState() => _myCarsState();
 }
 
-class Car {
-  final String name;
-  final String model;
-  final String year;
-  final String description;
-  final String image;
-  Car(this.name, this.model, this.year, this.description, this.image);
-}
-
 class _myCarsState extends State<myCars> {
-  final List<Car> cars = <Car>[];
+  final List<Car> cars = <Car>[
+    Car('Audi', 'A German automobile manufacturer based in Ingolstadt, Bavaria, Germany. Audi AG is a member of the Volkswagen Group.', '\$100'),
+    Car('BMW', 'A German multinational company which currently produces automobiles and motorcycles.', '\$200'),
+    Car('Mercedes', 'A German global automobile manufacturer and a division of the Daimler AG group.', '\$300'),
+    Car('Porsche', 'A German automobile manufacturer headquartered in Stuttgart, Baden-Württemberg.', '\$400'),
+    Car('Rayo McQueen', 'Kuchao.', '\$400'),
+    Car('Volkswagen', 'A German automaker headquartered in Ingolstadt, Bavaria.', '\$500'),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
         backgroundColor: Colors.blueAccent,
         title: const Text('My Vehicles'),
       ),
@@ -64,14 +63,31 @@ class _myCarsState extends State<myCars> {
 
   Widget buildRow(Car car, int index){
     return ListTile(
-      leading: const Icon(Icons.directions_car),
+      leading: SizedBox(
+        width: 100,
+        height: 100,
+        child: Image.network('https://imgur.com/c56QRt2.jpg'),
+      ),
       title: Text(car.name),
-      subtitle: Text(car.description),
-      // onLongPress: (){
-      //   setState(() {
-      //     cars.removeAt(index);
-      //   });
-      // },
+      subtitle: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+              car.description,
+              style: const TextStyle(
+                fontSize: 14,
+                color: Colors.black,
+              )
+          ),
+          Text(car.price,
+              style: const TextStyle(
+                fontSize: 14,
+                color: Colors.black,
+              )
+          ),
+        ],
+      ),
+
       trailing: IconButton(
         icon: const Icon(Icons.delete),
         onPressed: (){
@@ -83,7 +99,7 @@ class _myCarsState extends State<myCars> {
     );
   }
 
-  showAddButton(){
+  Widget showAddButton(){
     return FloatingActionButton(
       backgroundColor: Colors.blueAccent,
       child: const Icon(Icons.add),
@@ -99,30 +115,50 @@ class _myCarsState extends State<myCars> {
   addCar() {
     final carName = TextEditingController();
     final carDescription = TextEditingController();
+    final carPrice = TextEditingController();
     return Scaffold(
       appBar: AppBar(
+        elevation: 0.0,
         backgroundColor: Colors.blueAccent,
         title: const Text('Add Car'),
       ),
       body:
         Center(
-          child: Column(
-            children: [
-              TextField(
-                controller: carName,
-                decoration: const InputDecoration(
-                  labelText: 'Car Name',
-                  border: OutlineInputBorder(),
+          child: Container(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                TextField(
+                  controller: carName,
+                  decoration: const InputDecoration(
+                    labelText: 'Car Name',
+                    border: OutlineInputBorder(),
+                  ),
                 ),
-              ),
-              TextField(
-                controller: carDescription,
-                decoration: const InputDecoration(
-                  labelText: 'Car Description',
-                  border: OutlineInputBorder(),
+                const Divider(
+                  color: Colors.white,
+                  height: 16,
                 ),
-              ),
-            ],
+                TextField(
+                  controller: carDescription,
+                  decoration: const InputDecoration(
+                    labelText: 'Car Description',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                const Divider(
+                  color: Colors.white,
+                  height: 16,
+                ),
+                TextField(
+                  controller: carPrice,
+                  decoration: const InputDecoration(
+                    labelText: 'Car Rental Price',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ],
+            ),
           )
         ),
       floatingActionButton: FloatingActionButton(
@@ -130,7 +166,7 @@ class _myCarsState extends State<myCars> {
         child: const Icon(Icons.save),
         onPressed: () {
           setState(() {
-            Car car = Car(carName.text, '', '', carDescription.text, '');
+            Car car = Car(carName.text, carDescription.text, carPrice.text);
             cars.add(car);
           });
           Navigator.pop(context);
