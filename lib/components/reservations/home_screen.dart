@@ -1,9 +1,9 @@
-import 'package:erentcar_mobileapp/components/appbar.dart';
-import 'package:erentcar_mobileapp/components/bottom_navbar.dart';
+import 'package:erentcar_mobileapp/components/reservations/appbar.dart';
+import 'package:erentcar_mobileapp/components/reservations/bottom_navbar.dart';
 import 'package:flutter/material.dart';
 
-import '../../constants.dart';
-import 'components/body.dart';
+import 'constants.dart';
+import 'body.dart';
 //import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatelessWidget {

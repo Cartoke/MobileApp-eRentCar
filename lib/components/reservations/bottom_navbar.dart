@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:erentcar_mobileapp/constants.dart';
+import 'package:erentcar_mobileapp/components/reservations/constants.dart';
 
 class BottomNavbar extends StatelessWidget{
 

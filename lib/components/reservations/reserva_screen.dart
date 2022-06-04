@@ -1,6 +1,6 @@
-import 'package:erentcar_mobileapp/components/appbar.dart';
-import 'package:erentcar_mobileapp/components/bottom_navbar.dart';
-import 'package:erentcar_mobileapp/screens/reserva/components/body.dart';
+import 'package:erentcar_mobileapp/components/reservations/appbar.dart';
+import 'package:erentcar_mobileapp/components/reservations/bottom_navbar.dart';
+import 'package:erentcar_mobileapp/components/reservations/body.dart';
 import 'package:flutter/material.dart';
 
 class ReservaScreen extends StatelessWidget{

@@ -1,5 +1,5 @@
-import 'package:erentcar_mobileapp/constants.dart';
-import 'package:erentcar_mobileapp/screens/reserva/reserva_screen.dart';
+import 'package:erentcar_mobileapp/components/reservations/constants.dart';
+import 'package:erentcar_mobileapp/components/reservations/reserva_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -36,8 +36,6 @@ class Body extends StatelessWidget {
                   )
                 )
               ),
-              Image.asset("images/carrito.png",
-                  height: 150),
              Card(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
                   child: Padding(

@@ -1,7 +1,7 @@
-import 'package:erentcar_mobileapp/screens/home/home_screen.dart';
+import 'package:erentcar_mobileapp/components/reservations/home_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'package:erentcar_mobileapp/constants.dart';
+import 'package:erentcar_mobileapp/components/reservations/constants.dart';
 
 void main() {
   runApp(MyApp());
