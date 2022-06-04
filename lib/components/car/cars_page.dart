@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:erentcar_mobileapp/components/reservations/home_screen.dart';
 
 class cars_page extends StatefulWidget {
   const cars_page({Key? key}) : super(key: key);
@@ -33,6 +34,9 @@ class _cars_pageState extends State<cars_page> {
           elevation: 0.0,
           backgroundColor: Colors.blueAccent,
           title: const Text('My Vehicles'),
+          actions: <Widget>[
+            IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => HomeScreen()));}, icon: Icon(Icons.calendar_today))
+          ],
         ),
         body: cars.isNotEmpty ? buildCars() :
         const Center(

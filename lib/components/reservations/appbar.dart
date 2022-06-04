@@ -6,6 +6,7 @@ class Appbar extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return AppBar(
+        backgroundColor: Colors.blueAccent,
         title: Text('eRentCar'),
         centerTitle: true,
         elevation: 10,
