@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:erentcar_mobileapp/components/car/car_page.dart';
 
 class login_page extends StatefulWidget {
   @override
@@ -92,7 +93,9 @@ class _login_pageState extends State<login_page> {
                           color: Colors.lightBlue,
                           textColor: Colors.white,
                           child: Text("Sign In"),
-                          onPressed: () => {},
+                          onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => car_page()));
+                          },
                           splashColor: Colors.blueAccent,
                         ),
                         Divider(
@@ -118,7 +121,6 @@ class _login_pageState extends State<login_page> {
                           textColor: Colors.white,
                           child: Text("Register"),
                           onPressed: pushNext,
-
                         )
                       ],
                     ),

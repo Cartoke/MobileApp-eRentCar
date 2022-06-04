@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:erentcar_mobileapp/components/login/login_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/services.dart';
-import 'package:erentcar_mobileapp/components/car/car_page.dart';
 
 void main() {
   runApp(MyApp());
