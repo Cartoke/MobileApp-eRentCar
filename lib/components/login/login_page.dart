@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:erentcar_mobileapp/components/car/cars_page.dart';
+import 'package:flutter/widgets.dart';
 
 class login_page extends StatefulWidget {
   @override
@@ -135,6 +136,8 @@ class _login_pageState extends State<login_page> {
   }
 
   void pushNext() {
+    final _formKey = GlobalKey<FormState>();
+
     Navigator.of(context).push(
       MaterialPageRoute(
           builder: (BuildContext context){
@@ -143,9 +146,21 @@ class _login_pageState extends State<login_page> {
               body: Stack(
                 fit: StackFit.expand,
                 children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+
+                    ],
+                  ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+                      IconButton(
+                        padding: EdgeInsets.only(right: 300),
+                        onPressed: () { Navigator.pop(context); },
+                        icon: Icon(Icons.arrow_back_ios_outlined),
+                        iconSize: 30,
+                      ),
                       Image(
                         image: AssetImage("lib/assets/logo.png"),
                         width: 100,
@@ -155,6 +170,7 @@ class _login_pageState extends State<login_page> {
                         textAlign: TextAlign.center,
                       ),
                       Form(
+                        key: _formKey,
                         child: Theme(
                           data: ThemeData(
                               brightness: Brightness.dark, primarySwatch: Colors.teal,
@@ -169,19 +185,89 @@ class _login_pageState extends State<login_page> {
                             padding: EdgeInsets.all(30),
                             child: Column(
                               children: <Widget>[
-                                TextFormField(
-                                  decoration: InputDecoration(
-                                      labelText: "Enter e-mail:"
-                                  ),
-                                  keyboardType: TextInputType.emailAddress,
+                                 Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                                    child: TextFormField(
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(),
+                                        hintText: 'Enter name',
+                                      ),
+                                      keyboardType: TextInputType.emailAddress,
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Please enter some text';
+                                        }
+                                        return null;
+                                      },
+                                    ),
                                 ),
-                                TextFormField(
-                                  decoration: InputDecoration(
-                                      labelText: "Enter password:"
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                                  child: TextFormField(
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      hintText: 'Enter lastName',
+                                    ),
+                                    keyboardType: TextInputType.text,
+                                    obscureText: true,
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Please enter some text';
+                                      }
+                                      return null;
+                                    },
                                   ),
-                                  keyboardType: TextInputType.text,
-                                  obscureText: true,
                                 ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                                  child: TextFormField(
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      hintText: 'Enter email',
+                                    ),
+                                    keyboardType: TextInputType.text,
+                                    obscureText: true,
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Please enter some text';
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                                  child: TextFormField(
+                                    decoration: InputDecoration(
+                                      border: OutlineInputBorder(),
+                                      hintText: 'Enter password',
+                                    ),
+                                    keyboardType: TextInputType.text,
+                                    obscureText: true,
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Please enter some text';
+                                      }
+                                      return null;
+                                    },
+                                  ),
+                                ),
+                                MaterialButton(
+                                  height: 30,
+                                  minWidth:60,
+                                  color: Colors.lightBlue,
+                                  textColor: Colors.white,
+                                  child: Text("Sign In"),
+                                  onPressed: (){
+                                    if (_formKey.currentState!.validate()) {
+                                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => cars_page()));
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(content: Text('Processing Data')),
+                                      );
+                                    }
+                                  },
+                                  splashColor: Colors.blueAccent,
+                                )
                               ],
                             ),
                           ),
