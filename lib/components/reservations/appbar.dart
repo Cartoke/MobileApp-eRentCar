@@ -1,4 +1,5 @@
 
+import 'package:erentcar_mobileapp/components/profile/profile_page.dart';
 import 'package:erentcar_mobileapp/components/reservations/reserva_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ class Appbar extends StatelessWidget{
               icon: Icon(Icons.person),
               //color: Colors.black,
               onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder:(BuildContext context) => profile_page()));
               }
           )
         ],
