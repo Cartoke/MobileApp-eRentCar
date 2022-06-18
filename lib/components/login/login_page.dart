@@ -78,8 +78,9 @@ class _login_pageState extends State<login_page> {
                             children: <Widget>[
                               TextFormField(
                                 decoration: InputDecoration(
-                                  icon: Icon(Icons.person),
-                                  hintText: "Put your email"
+                                  icon: Icon(Icons.person, color: Colors.white),
+                                  hintText: "Put your email",
+                                  hintStyle: TextStyle(color: Colors.white)
                                 ),
                                 keyboardType: TextInputType.emailAddress,
                               ),
@@ -87,8 +88,9 @@ class _login_pageState extends State<login_page> {
                                 obscureText: showPassword,
                                 decoration: InputDecoration(
                                   //labelText: "Enter password:"
-                                    icon: Icon(Icons.vpn_key),
+                                    icon: Icon(Icons.vpn_key, color: Colors.white),
                                     hintText: "Put your password",
+                                    hintStyle: TextStyle(color: Colors.white),
                                     suffix: IconButton(onPressed: (){
                                       setState(() {
                                         if (showPassword) {
@@ -97,7 +99,7 @@ class _login_pageState extends State<login_page> {
                                           showPassword = true;
                                         }
                                       });
-                                    }, icon: Icon(showPassword == true?Icons.remove_red_eye:Icons.password),
+                                    }, icon: Icon(showPassword == true?Icons.remove_red_eye:Icons.visibility_off_sharp),
                                     )
                                 ),
                                 keyboardType: TextInputType.text,
@@ -203,7 +205,7 @@ class _login_pageState extends State<login_page> {
                               key: _formKey,
                               child: Theme(
                                 data: ThemeData(
-                                    brightness: Brightness.dark, primarySwatch: Colors.teal,
+                                    brightness: Brightness.dark, primarySwatch: Colors.lightBlue,
                                     inputDecorationTheme: InputDecorationTheme(
                                         labelStyle: TextStyle(
                                             color: Colors.lightBlue,
@@ -222,10 +224,10 @@ class _login_pageState extends State<login_page> {
                                             border: OutlineInputBorder(),
                                             hintText: 'Enter name',
                                           ),
-                                          keyboardType: TextInputType.emailAddress,
+                                          keyboardType: TextInputType.text,
                                           validator: (value) {
                                             if (value == null || value.isEmpty) {
-                                              return 'Please enter some text';
+                                              return 'Name invalid';
                                             }
                                             return null;
                                           },
@@ -236,13 +238,13 @@ class _login_pageState extends State<login_page> {
                                         child: TextFormField(
                                           decoration: InputDecoration(
                                             border: OutlineInputBorder(),
-                                            hintText: 'Enter lastName',
+                                            hintText: 'Enter last name',
                                           ),
                                           keyboardType: TextInputType.text,
                                           obscureText: true,
                                           validator: (value) {
                                             if (value == null || value.isEmpty) {
-                                              return 'Please enter some text';
+                                              return 'Last Name invalid';
                                             }
                                             return null;
                                           },
@@ -255,11 +257,11 @@ class _login_pageState extends State<login_page> {
                                             border: OutlineInputBorder(),
                                             hintText: 'Enter email',
                                           ),
-                                          keyboardType: TextInputType.text,
+                                          keyboardType: TextInputType.emailAddress,
                                           obscureText: true,
                                           validator: (value) {
                                             if (value == null || value.isEmpty) {
-                                              return 'Please enter some text';
+                                              return 'Email invalid';
                                             }
                                             return null;
                                           },
@@ -272,11 +274,11 @@ class _login_pageState extends State<login_page> {
                                             border: OutlineInputBorder(),
                                             hintText: 'Enter password',
                                           ),
-                                          keyboardType: TextInputType.text,
+                                          keyboardType: TextInputType.visiblePassword,
                                           obscureText: true,
                                           validator: (value) {
                                             if (value == null || value.isEmpty) {
-                                              return 'Please enter some text';
+                                              return 'Password invalid';
                                             }
                                             return null;
                                           },
