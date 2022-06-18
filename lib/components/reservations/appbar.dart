@@ -20,11 +20,6 @@ class Appbar extends StatelessWidget{
               }
           )
         ],
-        leading:IconButton(
-            icon: Icon(Icons.menu),
-            //color: Colors.black,
-            onPressed: (){}
-        )
     );
   }
 }
