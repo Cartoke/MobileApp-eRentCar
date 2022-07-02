@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:erentcar_mobileapp/components/car/cars_page.dart';
+import 'package:erentcar_mobileapp/components/profile/profile_page.dart';
 
 class MyDrawer extends StatelessWidget {
   @override
@@ -15,22 +17,22 @@ class MyDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
-            child: Text('Drawer Header'),
+            child: Text('eRentCar'),
           ),
           ListTile(
-            title: const Text('Item 1'),
+            title: const Text('My Cars'),
             onTap: () {
               // Update the state of the app.
               // ...
-              Navigator.pop(context);
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => cars_page()));
             },
           ),
           ListTile(
-            title: const Text('Item 2'),
+            title: const Text('My Profile'),
             onTap: () {
               // Update the state of the app.
               // ...
-              Navigator.pop(context);
+              Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => profile_page()));
             },
           ),
         ],
